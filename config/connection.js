@@ -1,7 +1,6 @@
 const mongoClient = require('mongodb').MongoClient
 require('dotenv').config()
 
-
 const state = {
   db: null
 }
@@ -16,7 +15,7 @@ module.exports.connect = function (done) {
     if (err) {
       return done(err)
     } else {
-      state.db = data.db(dbname)// hotel
+      state.db = data.db(dbname) // hotel
       done()
     }
   })
