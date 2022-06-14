@@ -1,0 +1,253 @@
+<style>
+  body { background-color: #ffffff; } .registration-form { padding: 50px 0; }
+  .registration-form form { background-color: #fff; max-width: 600px; margin:
+  auto; padding: 50px 70px; border-top-left-radius: 30px;
+  border-top-right-radius: 30px; box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  } .registration-form .form-icon { text-align: center; background-color:
+  #5c616d; border-radius: 50%; font-size: 40px; color: white; width: 100px;
+  height: 100px; margin: auto; margin-bottom: 50px; line-height: 100px; }
+  .registration-form .item { border-radius: 20px; margin-bottom: 25px; padding:
+  10px 20px; } .registration-form .create-account { border-radius: 30px;
+  padding: 10px 20px; font-size: 18px; font-weight: bold; background-color:
+  #5791ff; border: none; color: white; margin-top: 20px; } .registration-form
+  .social-media { max-width: 600px; background-color: #fff; margin: auto;
+  padding: 35px 0; text-align: center; border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px; color: #9fadca; border-top: 1px solid
+  #dee9ff; box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075); } .registration-form
+  .social-icons { margin-top: 30px; margin-bottom: 16px; } .registration-form
+  .social-icons a { font-size: 23px; margin: 0 3px; color: #5691ff; border: 1px
+  solid; border-radius: 50%; width: 45px; display: inline-block; height: 45px;
+  text-align: center; background-color: #fff; line-height: 45px; }
+  .registration-form .social-icons a:hover { text-decoration: none; opacity:
+  0.6; } @media (max-width: 576px) { .registration-form form { padding: 50px
+  20px; } .registration-form .form-icon { width: 70px; height: 70px; font-size:
+  30px; line-height: 70px; } form { padding: 50px; } }
+</style>
+<div class="registration-form" style="width: 80%;">
+  <form action="/vendor/addroom" method="post" enctype="multipart/form-data">
+    <div class="form-icon">
+      <i class="bi bi-house-door-fill"></i>
+    </div>
+    <div class="form-group">
+      <input
+        type="number"
+        class="form-control item"
+        id=""
+        name="number"
+        placeholder="Contact No"
+        required
+      />
+    </div>
+     <div class="form-group">
+      <input
+        type="number"
+        class="form-control item"
+        id=""
+        name="originalprice"
+        placeholder="Actual Price"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="number"
+        class="form-control item"
+        id=""
+        name="price"
+        placeholder="Offer Price"
+        required
+      />
+    </div>
+    
+    <div class="form-group">
+      <input
+        type="number"
+        class="form-control item"
+        id=""
+        name="qty"
+        placeholder="No of Rooms"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="type"
+      >
+        <option selected>Type of Room</option>
+        <option value="single">Single</option>
+        <option value="double">Double</option>
+        <option value="standard">Standard</option>
+        <option value="delux">Delux</option>
+        <option value="super delux">Super Delux</option>
+      </select>
+    </div>
+
+    <div class="form-group" style="margin-left: 23px;">
+      <label for="">Aminities</label>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckDefault"
+          name="wifi"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+          Free wifi</label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckDefault"
+          name="service"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">Service
+          24/7</label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckDefault"
+          name="food"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">Food
+          service</label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="pool"
+          id="flexSwitchCheckDefault"
+        />
+        <label
+          class="form-check-label"
+          for="flexSwitchCheckDefault"
+        >Pool</label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckDefault"
+          name="ac"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">AC</label>
+      </div>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckDefault"
+          name="tv"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">TV</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-group col-md-4">
+        <label for="inputState">State</label>
+        <select name="state" class="form-control" id="inputState">
+          <option value="">select one</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputDistrict">District</label>
+        <select name="district" class="form-control" id="inputDistrict">
+          <option value="">select one</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control item"
+        id=""
+        placeholder="Address"
+        name="location"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="number"
+        class="form-control item"
+        id=""
+        placeholder="Zip code"
+        name="pin"
+        required
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <label for="formFile" class="form-label">Upload image of the Room</label>
+      <input
+        required
+        class="form-control"
+        type="file"
+        id="formFile"
+        name="image"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <input
+        required
+        class="form-control"
+        type="file"
+        id="formFile"
+        name="imageone"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <input
+        required
+        class="form-control"
+        type="file"
+        id="formFile"
+        name="imagetwo"
+      />
+    </div>
+    <div class="form-group">
+      <textarea  type="text"
+        class="form-control item"
+        placeholder="description"
+        name="description"
+        required id="" cols="30" rows="10"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-block create-account">Add Room</button>
+    </div>
+  </form>
+</div>
+<script>
+  var Karnataka = ["Bangalore", "Shimoga", "Udupi"]; 
+  var Kerala = ["Kannur","Kozhikode", "Malappuram"];
+   var TamilNadu = ["Chennai", "Coimbatore","Madurai"];
+    $("#inputState").change(function (){
+       var StateSelected = $(this).val(); 
+       var optionsList;
+        var htmlString = "";
+        switch (StateSelected) {
+  case "Kerala": optionsList = Kerala;
+   break;
+   case "Karnataka": optionsList = Karnataka;
+    break; 
+   case "Tamil Nadu": optionsList = TamilNadu; 
+   break;
+    }
+     for (var i = 0; i < optionsList.length; i++) {
+        htmlString = htmlString + "<option value = '" + optionsList[i] + "' > " + optionsList[i] + "</option > ";
+         }
+  $("#inputDistrict").html(htmlString);
+   });
+
+</script>

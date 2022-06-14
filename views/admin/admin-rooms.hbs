@@ -1,0 +1,39 @@
+  
+<section style="width: 80%;margin-top:30px ;">
+    <div class="container">
+    <table class="table " id="userTable">
+  <thead>
+  
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">User</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each viewvendor}}
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td scope="row">{{this.user}}</td>
+      <td scope="row">{{this.email}}</td>
+    
+     
+      <td>
+        <a href="/admin/roomslist/{{this._id}}" class="btn btn-primary">View Rooms</a>
+
+
+
+        </td>
+    </tr>
+    {{/each}}
+   
+  </tbody>
+</table>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#userTable').DataTable();
+    });
+</script>

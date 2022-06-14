@@ -1,0 +1,51 @@
+  
+<section style="width: 80%; margin-top: 30px;">
+    <div class="container ">
+        <table class="table " id="userTable">
+  <thead>
+  
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">User</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each viewuser}}
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td>{{this.user}}</td>
+      <td>{{this.email}}</td>
+     
+      <td>{{#if this.isActive}}
+        <a href="/admin/block-user/{{this._id}}" class="btn btn-warning" onclick="return confirm('Are yoy Sure ?')">Block</a>
+        {{else}}
+        <a href="/admin/unblock-user/{{this._id}}" class="btn btn-success" onclick="return confirm('Are yoy Sure ?')">Unblock</a>
+    {{/if}}
+        <a href="/admin/delete-user/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you Sure ?')">Delete</a>
+     
+        </td>
+    </tr>
+    {{/each}}
+    {{!-- <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr> --}}
+    {{!-- <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr> --}}
+  </tbody>
+</table>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#userTable').DataTable();
+    });
+</script>

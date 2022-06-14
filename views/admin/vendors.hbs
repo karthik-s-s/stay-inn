@@ -1,0 +1,55 @@
+  
+<section style="width: 80%;margin-top:30px ;">
+    <div class="container">
+        <table class="table " id="userTable">
+  <thead>
+  
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">User</th>
+      <th scope="col">Email</th>
+      <th scope="col">License</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each viewvendor}}
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td>{{this.user}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.license}}</td>
+      <td>{{this.isAccept}}</td>
+     
+      <td>{{#if this.isActive}}
+        <a href="/admin/block-vendor/{{this._id}}" class="btn btn-warning" onclick="return confirm('Are yoy Sure ?')">Block</a>
+        {{else}}
+        <a href="/admin/unblock-vendor/{{this._id}}" class="btn btn-success" onclick="return confirm('Are yoy Sure ?')">Unblock</a>
+    {{/if}}
+        <a href="/admin/delete-vendor/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you Sure ?')">Delete</a>
+{{#if this.verify}}
+        <a href="/admin/reject-vendor/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you Sure ?')">Reject</a>
+        {{#if this.pending}}
+        <a href="/admin/reject-vendor/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you Sure ?')">Reject</a>
+        {{/if}}
+
+{{else}}
+        <a href="/admin/accept-vendor/{{this._id}}" class="btn btn-success" onclick="return confirm('Are you Sure ?')">Accept</a>
+
+{{/if}}
+
+
+        </td>
+    </tr>
+    {{/each}}
+   
+  </tbody>
+</table>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#userTable').DataTable();
+    });
+</script>

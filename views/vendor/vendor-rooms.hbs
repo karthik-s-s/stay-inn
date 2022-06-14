@@ -1,0 +1,39 @@
+  
+<section style="width: 80%;margin-top:30px ;">
+    <div class="container">
+        <table class="table " id="userTable">
+  <thead>
+  
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Type</th>
+     <th scope="col">Booking</th>
+      {{!-- <th scope="col">Remaining</th>  --}}
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each roomsDet }}
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td>{{this.rooms.type}}</td>
+      <td>{{this.rooms.booked}}</td>
+      {{!-- <td>{{this.rooms.quantity}}</td>  --}}
+     
+      <td>
+        <a href="/vendor/editroom/{{this.rooms.roomId}}" class="btn btn-primary" onclick="return confirm('Are yoy Sure ?')">Edit</a>
+         
+     
+        </td>
+    </tr>
+    {{/each}}
+   
+  </tbody>
+</table>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#userTable').DataTable();
+    });
+</script>

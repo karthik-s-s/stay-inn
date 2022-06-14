@@ -1,0 +1,347 @@
+
+<!-- Page Preloder -->
+<div id="preloder">
+  <div class="loader"></div>
+</div>
+<script>
+  $(function(){
+  let selectedDate;  
+var minDate=new Date()
+    $('#user1').flatpickr({
+      altInput:true,
+      minDate:'today',
+      'format':'yyyy-mm-dd',
+      'autoclose':true,
+      onChange(selectedDate){
+           $('#user2').flatpickr({
+      'numberOfMonth':1,
+      showAnim:'drop',
+      minDate:selectedDate[0].setDate(selectedDate[0].getDate()+1),
+      defaultDate:selectedDate[0].setDate(selectedDate[0].getDate()),
+      altInput:true,
+      'format':'yyyy-mm-dd',
+      'autoclose':true,
+     
+    });
+       
+
+      }
+      
+    });
+    
+ 
+     
+    });
+
+   
+   
+</script>
+
+<!-- Hero Section Begin -->
+<section class="hero spad set-bg" data-setbg="images/hero.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="hero__text">
+          <h5>WELCOME </h5>
+          <h2>Experience the greatest for your holidays.</h2>
+        </div>
+        <div id="booking" class="section">
+            <style>.section {
+    position: relative;
+    height: 100vh;
+}
+
+.section .section-center {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#booking {
+    font-family: 'Montserrat', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-image: url('images/hero.jpg'); 
+
+}
+
+#booking::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(54, 58, 61, 0.6);
+    
+}
+
+.booking-form {
+    background-color: #fff;
+    padding: 50px 20px;
+    -webkit-box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.booking-form .form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.booking-form .form-control {
+    background-color: #ebecee;
+    border-radius: 4px;
+    border: none;
+    height: 40px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #3e485c;
+    font-size: 14px;
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+    color: rgba(62, 72, 92, 0.3);
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+    color: rgba(62, 72, 92, 0.3);
+}
+
+.booking-form .form-control::placeholder {
+    color: rgba(62, 72, 92, 0.3);
+}
+
+.booking-form input[type="date"].form-control:invalid {
+    color: rgba(62, 72, 92, 0.3);
+}
+
+.booking-form select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.booking-form select.form-control+.select-arrow {
+    position: absolute;
+    right: 0px;
+    bottom: 4px;
+    width: 32px;
+    line-height: 32px;
+    height: 32px;
+    text-align: center;
+    pointer-events: none;
+    color: rgba(62, 72, 92, 0.3);
+    font-size: 14px;
+}
+
+.booking-form select.form-control+.select-arrow:after {
+    content: '\279C';
+    display: block;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.booking-form .form-label {
+    display: inline-block;
+    color: #3e485c;
+    font-weight: 700;
+    margin-bottom: 6px;
+    margin-left: 7px;
+}
+
+.booking-form .submit-btn {
+    display: inline-block;
+    color: #fff;
+    background-color: #1e62d8;
+    font-weight: 700;
+    padding: 14px 30px;
+    border-radius: 4px;
+    border: none;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.booking-form .submit-btn:hover,
+.booking-form .submit-btn:focus {
+    opacity: 0.9;
+}
+
+.booking-cta {
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.booking-cta h1 {
+    font-size: 52px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+}
+
+.booking-cta p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}</style>
+
+          <div class="section-center">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7 col-md-push-5">
+                  <div class="booking-cta">
+                   
+                 
+                  </div>
+                </div>
+                <div class="col-md-4 col-md-pull-7">
+                  <div class="booking-form">
+                    <form action="/rooms" method="post" >
+
+                      <div class="form-group">
+                        <span class="form-label">Your Destination</span>
+                       <div class="col-sm-4" style="min-width: 49%; padding-left: 0px;">
+                          <div class="form-group">
+                            {{!-- <span class="form-label">Rooms</span> --}}
+                            <select required name="place" id="" class="form-control" >
+                              <option value="">Select</option>
+                              {{#each vendordistrict}}
+                              <option value="{{this._id}}">{{this._id}}</option>
+                              {{/each}}
+                             
+                            </select>
+                            <span class="select-arrow"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6 dates" >
+                          <div class="form-group">
+                            <span class="form-label">Check In</span>
+                            <input required name="checkIn" class="form-control" type="text" autocomplete="off" id="user1" placeholder="yyyy-mm-dd" />
+                          </div>
+                        </div>
+                        <div class="col-sm-6 dates">
+                          <div class="form-group">
+                            <span class="form-label">Check out</span>
+                            <input required name="checkOut" class="form-control" type="text" autocomplete="off" id="user2" placeholder="yyyy-mm-dd"  />
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <div class="form-group">
+                            <span class="form-label">Rooms</span>
+                            <select required name="roomnocount" id="inputroom-no" class="form-control" >
+                              <option value="">Select</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                            </select>
+                            <span class="select-arrow"></span>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-group">
+                            <span class="form-label">Count</span>
+                            <select required name="count" id="input-count" class="form-control">
+                              <option value="">Select</option>
+                            </select>
+                            <span class="select-arrow"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <script>
+                        var one = [1,2];
+                        var two =[1,2,3,4];
+                        var three =[1,2,3,4,5,6];
+                        $("#inputroom-no").change(function(){
+                          var roomSelected = $(this).val();
+                          var optionsList;
+                          var htmlString ="";
+                          switch(roomSelected){
+                            case "1":optionsList =one;
+                            break;
+                            case "2":optionsList=two;
+                            break;
+                            case "3":optionsList=three;
+                            break;
+
+                          }
+                          for(var i = 0;i<optionsList.length;i++){
+                            htmlString = htmlString+"<option value ='"+optionsList[i]+"'>"+optionsList[i]+"</option>";
+                          }
+                          $('#input-count').html(htmlString);
+                        })
+                      </script>
+                      <div class="form-btn">
+                        <button type="submit" class="submit-btn">Check availability</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Hero Section End -->
+
+<!-- Gallery Section Begin -->
+<section class="gallery spad">
+  <div class="gallery__text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="section-title">
+            <h5>OUR GALLERY</h5>
+            <h2>Explore The Most Beautiful In The Hotel</h2>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="gallery__title">
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Sunt in culpa qui officia
+              deserunt mollit anim.</p>
+            <a href="#" class="primary-btn">View Gallery
+              <span class="arrow_right"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gallery__slider owl-carousel">
+    <div
+      class="gallery__item small__item set-bg"
+      data-setbg="images/gallery/pool-2.jpg"
+    ></div>
+    <div
+      class="gallery__item set-bg"
+      data-setbg="images/gallery/gallery-2.jpg"
+    ></div>
+    <div
+      class="gallery__item set-bg"
+      data-setbg="images/gallery/gallery-3.jpg"
+    ></div>
+    <div
+      class="gallery__item set-bg"
+      data-setbg="images/gallery/pool-1.jpg"
+    ></div>
+  </div>
+  
+</section>
+<!-- Gallery Section End -->
+
+<script src="/javascripts/owl.carousel.min.js"></script>
+<script src="/javascripts/jquery.slicknav.js"></script>
+<script src="/javascripts/main.js"></script>

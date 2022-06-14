@@ -1,0 +1,161 @@
+
+  <div class="container">
+    <table border="0" cellspacing="5" cellpadding="5">
+      <tbody>
+        <tr>
+          <td>Minimum date:</td>
+          <td><input type="text" id="min" name="min" /></td>
+        </tr>
+        <tr>
+          <td>Maximum date:</td>
+          <td><input type="text" id="max" name="max" /></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table id="userTable" class="table">
+      <thead class="bg-light">
+        <tr>
+          <th>No</th>
+          <th>Hotel</th>
+          <th>user</th>
+          <th>Type</th>
+          <th>check In</th>
+          <th>Check Out</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>No of People</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each userData}}
+          <tr>
+       
+             <td>
+              <div class="d-flex align-items-center">
+
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{inc @index}}</p>
+                </div>
+              </div>
+            </td>
+                 <td>
+              <div class="d-flex align-items-center">
+
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{this.bookingdetails.user}}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex align-items-center">
+
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{this.user}}</p>
+                </div>
+              </div>
+            </td>
+
+            <td>
+              <div class="d-flex align-items-center">
+
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{this.bookingdetails.type}}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <p
+                class="fw-normal mb-1"
+                id="checkIn"
+              >{{this.bookingdetails.checkIn}}</p>
+            </td>
+            <td>
+              <p
+                class="fw-normal mb-1"
+                id="checkOut"
+              >{{this.bookingdetails.checkOut}}</p>
+
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{this.bookingdetails.total}}</p>
+
+            </td>
+            <td>
+              {{#if this.bookingdetails.bookstatus}}
+                <span
+                  class="badge badge-success rounded-pill d-inline"
+                >{{this.bookingdetails.status}}</span>
+              {{else}}
+                <span
+                  class="badge badge-danger rounded-pill d-inline"
+                >Cancelled</span>
+              {{/if}}
+
+            </td>
+            <td>
+              <p class="fw-normal mb-1">{{this.bookingdetails.count}}</p>
+            </td>
+
+            <td>
+              {{#if this.bookingdetails.bookstatus}}
+                <a
+                  href="/admin/cancelbooking/{{this.bookingdetails.bookingId}}"
+                  class="btn btn-danger"
+                  onclick="return confirm('Are you Sure ?')"
+                >Cancel </a>
+              {{/if}}
+            </td>
+
+          </tr>
+        {{/each}}
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+     $('#userTable').DataTable(); 
+  var minDate,maxDate; });
+
+  var minDate, maxDate;
+  $(function () {
+  $('#min').datepicker() })
+   $(function () {
+     $('#max').datepicker() 
+     })
+
+  $("#max").blur(function () {
+  $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) { 
+    var min = new Date($('#min').val()) 
+    var max = new Date($('#max').val()) 
+    var date = new Date(data[4]) 
+    console.log('min',min);
+    console.log('max',max);
+    console.log('date',date);
+    if ((min === null && max === null) 
+    || (min === null && date <= max) ||
+     (min <= date && max === null) || 
+     (min <= date && date <= max))
+   {
+     return true;
+    }
+     return false;
+   }
+   ) 
+   });
+  $(document).ready(function () {
+    
+      minDate = new Date($('#min'), 
+  { format: 'MMMM Do YYYY' });
+   maxDate = new Date($('#max'), {
+   format: 'MMMM Do YYYY' }); 
+    var table = $('#userTable').DataTable(); 
+  $('#min, #max').on('change', function () {
+     table.draw(); }); });
+</script>

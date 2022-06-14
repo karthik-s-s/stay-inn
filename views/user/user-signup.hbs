@@ -1,0 +1,95 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div
+          class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden"
+        >
+          <div class="card-img-left d-none d-md-flex">
+            <!-- Background image for card set in CSS! -->
+            
+          </div>
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
+            <form action="/signup" method="post" id="signup-form">
+              <label for="">Username</label>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="floatingInputUsername"
+                  name="user"
+                  placeholder="My username"
+                >
+                {{! <label for="floatingInputUsername">Username</label> }}
+              </div>
+              <label for="">Mobile No</label>
+              <div class="form-floating mb-3">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="floatingInputUsername"
+                  name="mobile"
+                  placeholder="Mobile No"
+                >
+              </div>
+              <label for="">Email</label>
+              <div class="form-floating mb-3">
+                {{! <label for="">email</label> }}
+                <input
+                  type="email"
+                  class="form-control"
+                  id="floatingInputEmail"
+                  name="email"
+                  placeholder="name@example.com"
+                >
+                {{! <label for="floatingInputEmail">Email address</label> }}
+              </div>
+              {{#if logErr}}
+                <p style="color: red;"> email already exists.</p>
+              {{/if}}
+
+              <hr />
+              <label for="">Password</label>
+              <div class="form-floating mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="floatingPassword"
+                  placeholder="Password"
+                  name="password"
+                >
+
+              </div>
+
+              <div class="d-grid mb-2">
+                <button
+                  style="background-color: #03A9F4; color: white;"
+                  class="btn btn-lg btn-login fw-bold text-uppercase"
+                  type="submit"
+                >Register</button>
+              </div>
+
+              <a class="d-block text-center mt-2 small" href="/login">Have an
+                account? Sign In</a>
+
+              <hr class="my-4" />
+              
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<style>
+  body { background: #007bff; background: linear-gradient(to right, #ffffff,
+  #ffffff); } .card-img-left { width: 45%; /* Link to your background image
+  using in the property below! */ background: scroll center
+  url('/images/sign1.jpg'); background-size: cover; } .btn-login {
+  font-size: 0.9rem; letter-spacing: 0.05rem; padding: 0.75rem 1rem; }
+  .btn-google { color: white !important; background-color: #ea4335; }
+  .btn-facebook { color: white !important; background-color: #3b5998; }
+</style>

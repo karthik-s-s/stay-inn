@@ -1,0 +1,208 @@
+
+
+<div class="container mt-3 mb-3">
+   
+    <div class="row">
+        <form id="book" class="p-3 mt-3" method="post">
+
+            <div class="col-md-6">
+                <h5 class="mb-0 text-success">Arrive as guests, leave as friends</h5>
+             <h5 class="mb-3">We’re more than just a room</h5>
+
+                <h5 class="mb-3">Don’t just dream of a vacation. Just do it!</h5>
+             
+            </div>
+            
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="bg-pay p-3" >
+                    <span class="font-weight-bold">BOOK NOW</span>
+                    <hr>
+                    <div class="d-flex justify-content-between mt-2"><span class="fw-500">User&nbsp;&nbsp;</span>
+                    <input
+                                name="user" value="{{userBooking.user}}" readonly
+                                style="border: 0px;background-color: #eee; width: 70px;"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span class="fw-500">Check In&nbsp;&nbsp;</span><input name="checkIn"
+                                value="{{userBooking.bookingdetails.checkIn}}" readonly
+                                style="border: 0px;background-color: #eee;width: 100px;">
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span class="fw-500">Check Out&nbsp;&nbsp;</span>
+                        <input name="checkOut" value="{{userBooking.bookingdetails.checkOut}}" readonly
+                                style="border: 0px;background-color: #eee;width: 100px;">
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span class="fw-500">Hotel Name&nbsp;&nbsp;</span>
+                        <input name="hotelname" value="{{userBooking.bookingdetails.user}}" readonly
+                                style="border: 0px;background-color: #eee;width: 70px;">
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span class="lh-16 fw-500">Type&nbsp;&nbsp;</span>
+                        <input name="type" value="{{userBooking.bookingdetails.type}}" readonly
+                                style="border: 0px;background-color: #eee;width: 70px;">
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span class="lh-16 fw-500">Room Count&nbsp;&nbsp;</span><input name="roomcount"
+                                value="{{userBooking.bookingdetails.roomnocount}}" readonly
+                                style="border: 0px;background-color: #eee;width: 70px;">
+                    </div>
+                    <hr>
+
+                    <div class="d-flex justify-content-between mt-2">
+                        <span class="fw-500">Total&nbsp;&nbsp;</span>
+                        
+                            <input name="total" value="{{userBooking.bookingdetails.total}}" readonly
+                                style="border: 0px;background-color: #eee;width: 70px; font-weight: bold;font-size: larger;">
+                    </div>
+                    <hr>
+                    <div class="form-check">
+                        <input class="form-check-input" value="payhotel" type="radio" name="paymentmethod"
+                            id="flexRadioDefault1" />
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Pay At Hotel
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" value="payonline" type="radio" name="paymentmethod"
+                            id="flexRadioDefault2" />
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Pay Online
+                        </label>
+
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-success btn-block">Proceed to payment</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .cancel {
+        text-decoration: none
+    }
+
+    .bg-pay {
+        background-color: #eee;
+        border-radius:
+            2px
+    }
+
+    .com-color {
+        color: #8f37aa !important
+    }
+
+    .radio {
+        cursor: pointer
+    }
+
+    label.radio input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        pointer-events:
+            none
+    }
+
+    label.radio div {
+        padding: 7px 14px;
+        border: 2px solid #8f37aa;
+        display:
+            inline-block;
+        color: #8f37aa;
+        border-radius: 3px;
+        text-transform:
+            uppercase;
+        width: 100%;
+        margin-bottom: 10px
+    }
+
+    label.radio input:checked+div {
+        border-color: #8f37aa;
+        background-color: #8f37aa;
+        color:
+            #fff
+    }
+
+    .fw-500 {
+        font-weight: 400
+    }
+
+    .lh-16 {
+        line-height: 16px
+    }
+</style>
+
+<script>
+$("#book").submit((e)=>{
+    e.preventDefault()
+    $.ajax({
+        url:'/place-order',
+        method:'post',
+        data:$('#book').serialize(),
+        success:(response)=>{
+            
+            if(response.payhotel){
+                alert("order placed")
+                window.location.href="/order-success"//pay offline
+
+            }else{
+                razorpayPayment(response)
+            }
+        }
+    })
+})
+
+function razorpayPayment(order){
+    var options = {
+    "key": "rzp_test_Pan4uXvT7F9Zu7", 
+    "amount": order.amount,
+    "currency": "INR",
+    "name": "Stay Inn",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": order.id,
+    "handler": function (response){
+     
+        verifyPayment(response,order)
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+    rzp1.open();
+
+}
+function verifyPayment(payment,order){
+    $.ajax({
+        url:'/verify-payment',
+        data:{
+            payment,
+            order
+        },
+        method:'post',
+        success:(response)=>{
+            if(response.status){
+              
+                alert("Payment success")
+                window.location.href="/order-success"//pay online
+
+            }else{
+                alert ("Payment failed")
+            }
+        }
+    })
+}
+</script>

@@ -1,0 +1,38 @@
+<section style="width: 80%;margin-top:30px ;">
+  <div class="container">
+    <table class="table" id="userTable">
+      <thead>
+
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Type</th>
+          <th scope="col">Price</th>
+          <th scope="col">Number</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each roomsDet}}
+          <tr>
+            <th scope="row">{{inc @index}}</th>
+ <th scope="row">{{this.rooms.type}}</th>
+<th scope="row">{{this.rooms.price}}</th>
+<th scope="row">{{this.rooms.number}}</th>
+
+
+         
+            
+
+            <td>
+
+            </td>
+          </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+  </div>
+</section>
+<script type="text/javascript">
+  $(document).ready(function () { $('#userTable').DataTable(); });
+</script>

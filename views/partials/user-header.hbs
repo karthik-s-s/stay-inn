@@ -1,0 +1,103 @@
+ <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__logo">
+            <a href="/"><img src="img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap">
+            <nav class="header__menu mb-3">
+                            <ul>
+                                
+                                <li class="active"><a href="/">Home</a></li>
+                                <li><a href="/about">About Us</a></li>
+                               
+                            </ul>
+                        </nav>
+        </div>
+ 
+        <div class="offcanvas__btn__widget">
+            {{!-- <a href="#">Book Now <span class="arrow_right"></span></a> --}}
+            
+              <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{#if user}}
+                                    {{user}}
+                                    {{else}}
+                                    Account
+                                    {{/if}}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        {{#if uloggedIn}}
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                        <a class="dropdown-item" href="/profile">Profile</a>
+                                        {{else}}
+                                         <a class="dropdown-item" href="/login">Login</a>
+                                         {{/if}}
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+        </div>
+     
+    </div>
+    <!-- Offcanvas Menu End -->
+
+<header class="header">
+   
+    <div class="header__nav__option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo "  >
+                        <a style="color: white;" href="/"><img style="width: 4em;height: 3em;"  src="images/hotels-logo-41822.png"   alt="">Stay Inn </a>
+                                                    
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav">
+                        <nav class="header__menu">
+                            <ul class="">
+                                
+                                <li class="active"><a href="/">Home</a></li>
+                                <li><a href="/about">About Us</a></li>
+                               
+                            </ul>
+                        </nav>
+
+                        <div class="header__nav__widget">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{#if user}}
+                                    {{user}}
+                                    {{else}}
+                                    Account
+                                    {{/if}}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        {{#if uloggedIn}}
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                        <a class="dropdown-item" href="/profile">Profile</a>
+                                        {{else}}
+                                         <a class="dropdown-item" href="/login">Login</a>
+                                         {{/if}}
+                                    </li>
+                                   
+                                    {{!-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+                                </ul>
+                            </div>
+
+                            {{!-- <a href="#">Login <span class="arrow_right"></span></a> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <span class="fa fa-bars"></span>
+            </div>
+        </div>
+    </div>
+</header>
