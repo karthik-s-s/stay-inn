@@ -5,10 +5,10 @@ const bcrypt = require('bcrypt')
 const { ObjectId } = require('mongodb')
 
 const Razorpay = require('razorpay')
-
+require('dotenv').config()
 const instance = new Razorpay({
-  key_id: 'rzp_test_Pan4uXvT7F9Zu7',
-  key_secret: 'JUbcBJpHHVyVSfGSWtX80F2h'
+  key_id: process.env.key_id,
+  key_secret: process.env.key_secret
 })
 
 module.exports = {
