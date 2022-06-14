@@ -1,4 +1,6 @@
 const mongoClient = require('mongodb').MongoClient
+require('dotenv').config()
+
 
 const state = {
   db: null
@@ -8,7 +10,7 @@ const state = {
 // connection done vv
 
 module.exports.connect = function (done) {
-  const url = 'mongodb+srv://Karthik:Ka9496523830@cluster0.aqshs6i.mongodb.net/hotel?retryWrites=true&w=majority'
+  const url = process.env.DATABASE
   const dbname = 'hotel'
   mongoClient.connect(url, (err, data) => {
     if (err) {
