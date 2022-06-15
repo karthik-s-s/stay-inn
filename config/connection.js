@@ -9,7 +9,7 @@ const state = {
 // connection done vv
 
 module.exports.connect = function (done) {
-  const url = process.env.DATABASE
+  const url = 'mongodb://localhost:27017'
   const dbname = 'hotel'
   mongoClient.connect(url, (err, data) => {
     if (err) {
