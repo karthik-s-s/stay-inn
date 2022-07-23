@@ -46,7 +46,11 @@ router.post('/signup', function (req, res) {
       req.session.userid = response._id
 
       req.session.uloggedIn = true
-      res.redirect('/')
+      if (req.session.notLogin) {
+        res.redirect('/viewroom')
+      } else {
+        res.redirect('/')
+      }
     })
     .catch(() => {
       req.session.logErr = true
@@ -207,7 +211,7 @@ router.post('/place-order', verifyUser, (req, res) => {
   }
 })
 router.get('/order-success', verifyUser, (req, res) => { // cod
-  res.redirect('/login')
+  res.redirect('/viewbooking')
 })
 
 router.get('/about', function (req, res) {
